@@ -7,7 +7,7 @@ const WelcomeScreen = ({ navigation }: any) => {
       <Text>Welcome Screen</Text>
       <Button
         title="Get Started"
-        onPress={() => navigation.push('EnterCompanyID')}
+        onPress={() => navigation.push('EnterCompanyIDScreen')}
       />
     </View>
   );
