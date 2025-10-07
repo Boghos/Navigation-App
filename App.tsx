@@ -8,6 +8,7 @@ import SplashScreen from './src/screens/SplashScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import EnterCompanyIDScreen from './src/screens/EnterCompanyIDScreen';
 import PickVoiceScreen from './src/screens/PickVoiceScreen';
+import MainScreen from './src/screens/MainScreen';
 import { useState, useEffect } from 'react';
 
 type RootStackParamList = {
