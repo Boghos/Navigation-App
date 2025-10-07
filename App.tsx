@@ -6,6 +6,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import SplashScreen from './src/screens/SplashScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
+import EnterCompanyIDScreen from './src/screens/EnterCompanyIDScreen';
+import PickVoiceScreen from './src/screens/PickVoiceScreen';
 import { useState, useEffect } from 'react';
 
 type RootStackParamList = {
