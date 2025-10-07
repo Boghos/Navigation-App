@@ -9,6 +9,10 @@ const MainScreen = ({ navigation }: any) => {
         title="Open Settings"
         onPress={() => navigation.navigate('SettingsModal')}
       />
+      <Button
+        title="Launch Voice bot"
+        onPress={() => navigation.navigate('VoiceChatModal')}
+      />
     </View>
   );
 };
