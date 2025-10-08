@@ -62,6 +62,92 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
+# How to Build & Run the Project
+
+Follow these steps to set up, build, and run the React Native app locally:
+
+# 1. Clone the Repository
+
+```bash
+git clone git@github.com:Boghos/Navigation-App.git
+cd NavigationApp
+```
+
+# 2. Install Dependencies
+
+Make sure you have Node.js, npm or yarn, and React Native CLI installed.
+
+Then install the project dependencies:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+# 3. Install Android Dependencies
+
+If this is your first time running a React Native Android project:
+
+Install Android Studio and set up the Android SDK.
+
+Make sure the ANDROID_HOME environment variable is set.
+
+Start an Android emulator or connect a physical device via USB with debugging enabled.
+
+# 4. Build the App
+
+Before running, ensure Metro bundler is running in a terminal:
+
+```bash
+npm start
+```
+
+Then, in a new terminal, build and launch the Android app:
+
+```bash
+npx react-native run-android
+```
+
+If you’re using iOS (on macOS):
+
+```bash
+npx pod-install ios
+npx react-native run-ios
+```
+
+# 5. Test Deep Links (Custom Scheme)
+
+This project supports deep linking to the Set Company ID screen.
+
+After building the app, run:
+
+```bash
+npx uri-scheme open myapp://settings/set-company-id --android
+```
+
+This will open the app and navigate directly to the “Set Company ID” screen — skipping the onboarding flow.
+
+# Notes
+
+The deep link scheme is configured as myapp://.
+
+If you modify deep link paths, update them in both:
+
+src/navigation/index.tsx (linking config)
+
+android/app/src/main/AndroidManifest.xml (intent filters)
+
+If changes to the manifest are made, rebuild the app with:
+
+```bash
+npx react-native run-android
+```
+
 ## Step 3: Modify your app
 
 Now that you have successfully run the app, let's make changes!
