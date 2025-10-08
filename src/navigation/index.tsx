@@ -4,7 +4,10 @@ import EnterCompanyIDScreen from '../screens/EnterCompanyIDScreen';
 import PickVoiceScreen from '../screens/PickVoiceScreen';
 import MainScreen from '../screens/MainScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+import VoiceBotScreen from '../screens/VoiceBotScreen';
 import { useState, useEffect } from 'react';
+import { Platform } from 'react-native';
 
 type RootParamList = {
   SplashScreen: undefined;
@@ -12,6 +15,9 @@ type RootParamList = {
   OnBoardingStack: undefined;
   MainStack: undefined;
   PickVoiceScreen: undefined;
+  VoicebotModal: undefined;
+  SettingsModal: undefined;
+  PickVoiceModal: undefined;
 };
 
 const Root = createNativeStackNavigator<RootParamList>();
@@ -20,6 +26,7 @@ import { createNativeStackNavigator as createInnerStack } from '@react-navigatio
 
 const OnBoardingStack = createInnerStack();
 const MainStack = createInnerStack();
+const SettingsStack = createInnerStack();
 
 function OnBoardingStackNavigator() {
   return (
@@ -46,6 +53,23 @@ function MainStackNavigator() {
   );
 }
 
+function SettingsStackNavigator() {
+  return (
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen
+        name="SettingsHome"
+        component={SettingsScreen}
+        options={{ headerShown: true, title: 'Settings' }}
+      />
+      <SettingsStack.Screen
+        name="PickVoice"
+        component={PickVoiceScreen}
+        options={{ headerShown: true }}
+      />
+    </SettingsStack.Navigator>
+  );
+}
+
 const Navigator = () => {
   const [initialRouteDetermined, setInitialRouteDetermined] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
@@ -69,7 +93,39 @@ const Navigator = () => {
             name="OnBoardingStack"
             component={OnBoardingStackNavigator}
           />
-          <Root.Screen name="MainStack" component={MainStackNavigator} />
+          <Root.Screen
+            name="MainStack"
+            component={MainStackNavigator}
+            options={{ headerShown: false, presentation: 'card' }}
+          />
+          {/* PickVoice Modal: presented at root level over MainStack */}
+          <Root.Screen
+            name="PickVoiceModal"
+            component={PickVoiceScreen}
+            options={{
+              headerShown: true,
+              title: 'Pick Voice',
+              presentation: Platform.OS === 'ios' ? 'modal' : 'modal',
+            }}
+          />
+
+          {/* Voicebot: full screen modal launched from Main */}
+          <Root.Screen
+            name="VoicebotModal"
+            component={VoiceBotScreen}
+            options={{ headerShown: false, presentation: 'fullScreenModal' }}
+          />
+
+          {/* Settings Modal: we present as modal with its own nested stack */}
+          <Root.Screen
+            name="SettingsModal"
+            component={SettingsStackNavigator}
+            options={{
+              headerShown: false,
+              presentation:
+                Platform.OS === 'ios' ? 'modal' : 'containedTransparentModal',
+            }}
+          />
         </>
       )}
     </Root.Navigator>
