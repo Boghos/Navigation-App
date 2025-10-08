@@ -139,7 +139,7 @@ const Navigator = () => {
             component={MainStackNavigator}
             options={{ headerShown: false, presentation: 'card' }}
           />
-          {/* PickVoice Modal: presented at root level over MainStack */}
+
           <Root.Screen
             name="PickVoiceModal"
             component={PickVoiceScreen}
@@ -152,7 +152,6 @@ const Navigator = () => {
             }}
           />
 
-          {/* Voicebot: full screen modal launched from Main */}
           {/* <Root.Screen
             name="VoiceBotModal"
             component={VoiceBotScreen}
@@ -163,7 +162,6 @@ const Navigator = () => {
             }}
           /> */}
 
-          {/* Settings Modal: we present as modal with its own nested stack */}
           <Root.Screen
             name="SettingsModal"
             component={SettingsStackNavigator}
