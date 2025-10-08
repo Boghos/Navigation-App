@@ -10,6 +10,8 @@ type RootParamList = {
   SplashScreen: undefined;
   WelcomeScreen: undefined;
   OnBoardingStack: undefined;
+  MainStack: undefined;
+  PickVoiceScreen: undefined;
 };
 
 const Root = createNativeStackNavigator<RootParamList>();
@@ -17,6 +19,7 @@ const Root = createNativeStackNavigator<RootParamList>();
 import { createNativeStackNavigator as createInnerStack } from '@react-navigation/native-stack';
 
 const OnBoardingStack = createInnerStack();
+const MainStack = createInnerStack();
 
 function OnBoardingStackNavigator() {
   return (
@@ -25,14 +28,21 @@ function OnBoardingStackNavigator() {
       <OnBoardingStack.Screen
         name="EnterCompanyIDScreen"
         component={EnterCompanyIDScreen}
-        options={{ headerShown: true }}
       />
       <OnBoardingStack.Screen
         name="PickVoiceScreen"
         component={PickVoiceScreen}
-        options={{ headerShown: true, presentation: 'modal' }}
+        options={{ presentation: 'modal' }}
       />
     </OnBoardingStack.Navigator>
+  );
+}
+
+function MainStackNavigator() {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen name="MainScreen" component={MainScreen} />
+    </MainStack.Navigator>
   );
 }
 
@@ -50,18 +60,20 @@ const Navigator = () => {
   }, []);
 
   return (
-    <Root.Navigator>
+    <Root.Navigator screenOptions={{ headerShown: false }}>
       {showSplash ? (
         <Root.Screen name="SplashScreen" component={SplashScreen} />
       ) : (
-        // After splash, show Onboarding stack (normal launch)
-        <Root.Screen
-          name="OnBoardingStack"
-          component={OnBoardingStackNavigator}
-          options={{ headerShown: false }}
-        />
+        <>
+          <Root.Screen
+            name="OnBoardingStack"
+            component={OnBoardingStackNavigator}
+          />
+          <Root.Screen name="MainStack" component={MainStackNavigator} />
+        </>
       )}
     </Root.Navigator>
   );
 };
+
 export default Navigator;

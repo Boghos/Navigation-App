@@ -5,6 +5,7 @@ const PickVoiceScreen = ({ navigation }: any) => {
   return (
     <View>
       <Text>PickVoiceScreen</Text>
+      <Button title="Dismiss" onPress={() => navigation.goBack()} />
     </View>
   );
 };
