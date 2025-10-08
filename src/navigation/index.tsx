@@ -65,17 +65,15 @@ function MainStackNavigator() {
 }
 
 // Deep linking config
-const linking: LinkingOptions<any> = {
+const linking = {
   prefixes: ['myapp://', 'https://myapp.example.com'],
   config: {
     screens: {
-      // root-level mapping - we map directly into SettingsModal -> SetCompanyID
       SettingsModal: {
-        path: 'settings/set-company',
-        // The path will navigate into the modal which contains the SettingsStack
+        screens: {
+          SetCompanyIDScreen: 'settings/set-company-id',
+        },
       },
-      // fallback/default
-      SplashScreen: 'splash',
     },
   },
 };
