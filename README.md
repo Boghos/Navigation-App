@@ -77,10 +77,11 @@ cd Navigation-App
 
 ## Using HTTPS
 
-````bash
+```bash
 git clone https://github.com/Boghos/Navigation-App.git
 cd Navigation-App
 ```
+
 # 2. Install Dependencies
 
 Make sure you have Node.js, npm or yarn, and React Native CLI installed.
@@ -89,7 +90,7 @@ Then install the project dependencies:
 
 ```bash
 npm install
-````
+```
 
 or
 
