@@ -9,6 +9,7 @@ import VoiceBotScreen from '../screens/VoiceBotScreen';
 import SetCompanyIDScreen from '../screens/SetCompanyIDScreen';
 import { useState, useEffect } from 'react';
 import { Platform } from 'react-native';
+import { LinkingOptions } from '@react-navigation/native';
 
 type RootParamList = {
   SplashScreen: undefined;
@@ -62,6 +63,22 @@ function MainStackNavigator() {
     </MainStack.Navigator>
   );
 }
+
+// Deep linking config
+const linking: LinkingOptions<any> = {
+  prefixes: ['myapp://', 'https://myapp.example.com'],
+  config: {
+    screens: {
+      // root-level mapping - we map directly into SettingsModal -> SetCompanyID
+      SettingsModal: {
+        path: 'settings/set-company',
+        // The path will navigate into the modal which contains the SettingsStack
+      },
+      // fallback/default
+      SplashScreen: 'splash',
+    },
+  },
+};
 
 function SettingsStackNavigator() {
   return (
@@ -164,4 +181,4 @@ const Navigator = () => {
   );
 };
 
-export default Navigator;
+export default { Navigator, linking };

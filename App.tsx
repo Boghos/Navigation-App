@@ -7,8 +7,8 @@ import Navigation from './src/navigation/index';
 const App = () => {
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Navigation />
+      <NavigationContainer linking={Navigation.linking}>
+        <Navigation.Navigator />
       </NavigationContainer>
     </SafeAreaProvider>
   );
