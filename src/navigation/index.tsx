@@ -52,11 +52,7 @@ const Navigator = () => {
   return (
     <Root.Navigator>
       {showSplash ? (
-        <Root.Screen
-          name="SplashScreen"
-          component={SplashScreen}
-          options={{ headerShown: false }}
-        />
+        <Root.Screen name="SplashScreen" component={SplashScreen} />
       ) : (
         // After splash, show Onboarding stack (normal launch)
         <Root.Screen
