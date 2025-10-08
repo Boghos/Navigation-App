@@ -5,7 +5,7 @@ const VoiceBotScreen = ({ navigation }: any) => {
   return (
     <View>
       <Text>VoiceBotScreen</Text>
-      <Button title="Dismiss" onPress={navigation.goBack()} />
+      <Button title="Dismiss" onPress={() => navigation.goBack()} />
     </View>
   );
 };

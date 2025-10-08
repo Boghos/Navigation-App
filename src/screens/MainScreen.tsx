@@ -12,7 +12,9 @@ const MainScreen = ({ navigation }: any) => {
       </TouchableOpacity>
       <Button
         title="Launch Voice bot"
-        onPress={() => navigation.navigate('VoiceChatModal')}
+        onPress={() => {
+          navigation.navigate('VoiceBotModal');
+        }}
       />
     </View>
   );

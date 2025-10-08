@@ -6,6 +6,7 @@ import MainScreen from '../screens/MainScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import VoiceBotScreen from '../screens/VoiceBotScreen';
+import SetCompanyIDScreen from '../screens/SetCompanyIDScreen';
 import { useState, useEffect } from 'react';
 import { Platform } from 'react-native';
 
@@ -15,7 +16,8 @@ type RootParamList = {
   OnBoardingStack: undefined;
   MainStack: undefined;
   PickVoiceScreen: undefined;
-  VoicebotModal: undefined;
+  VoiceBotModal: undefined;
+  VoiceBotScreen: undefined;
   SettingsModal: undefined;
   PickVoiceModal: undefined;
 };
@@ -39,7 +41,7 @@ function OnBoardingStackNavigator() {
       <OnBoardingStack.Screen
         name="PickVoiceScreen"
         component={PickVoiceScreen}
-        options={{ presentation: 'modal' }}
+        options={{ presentation: 'card' }}
       />
     </OnBoardingStack.Navigator>
   );
@@ -49,6 +51,14 @@ function MainStackNavigator() {
   return (
     <MainStack.Navigator>
       <MainStack.Screen name="MainScreen" component={MainScreen} />
+      <MainStack.Screen
+        name="VoiceBotModal"
+        component={VoiceBotScreen}
+        options={{
+          presentation: 'modal',
+          animation: 'slide_from_bottom',
+        }}
+      />
     </MainStack.Navigator>
   );
 }
@@ -62,9 +72,25 @@ function SettingsStackNavigator() {
         options={{ headerShown: true, title: 'Settings' }}
       />
       <SettingsStack.Screen
-        name="PickVoice"
+        name="PickVoiceScreen"
         component={PickVoiceScreen}
         options={{ headerShown: true }}
+      />
+      <SettingsStack.Screen
+        name="SetCompanyIDScreen"
+        component={SetCompanyIDScreen}
+        options={{
+          headerShown: true,
+          title: 'Set Company ID',
+        }}
+      />
+      <SettingsStack.Screen
+        name="EnterCompanyID"
+        component={EnterCompanyIDScreen}
+        options={{
+          headerShown: true,
+          title: 'Enter Company ID',
+        }}
       />
     </SettingsStack.Navigator>
   );
@@ -105,16 +131,22 @@ const Navigator = () => {
             options={{
               headerShown: true,
               title: 'Pick Voice',
-              presentation: Platform.OS === 'ios' ? 'modal' : 'modal',
+              presentation:
+                Platform.OS === 'ios' ? 'modal' : 'transparentModal',
+              animation: 'slide_from_bottom',
             }}
           />
 
           {/* Voicebot: full screen modal launched from Main */}
-          <Root.Screen
-            name="VoicebotModal"
+          {/* <Root.Screen
+            name="VoiceBotModal"
             component={VoiceBotScreen}
-            options={{ headerShown: false, presentation: 'fullScreenModal' }}
-          />
+            options={{
+              presentation:
+                Platform.OS === 'ios' ? 'modal' : 'transparentModal',
+              animation: 'slide_from_bottom',
+            }}
+          /> */}
 
           {/* Settings Modal: we present as modal with its own nested stack */}
           <Root.Screen
@@ -122,8 +154,8 @@ const Navigator = () => {
             component={SettingsStackNavigator}
             options={{
               headerShown: false,
-              presentation:
-                Platform.OS === 'ios' ? 'modal' : 'containedTransparentModal',
+              presentation: Platform.OS === 'ios' ? 'pageSheet' : 'modal',
+              animation: 'slide_from_bottom',
             }}
           />
         </>

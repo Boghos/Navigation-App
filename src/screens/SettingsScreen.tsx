@@ -5,10 +5,13 @@ const SettingsScreen = ({ navigation }: any) => {
   return (
     <View>
       <Text>SettingsScreen</Text>
-      <Button title="Pick Voice" onPress={navigation.push('PickVoiceScreen')} />
+      <Button
+        title="Pick Voice"
+        onPress={() => navigation.navigate('PickVoiceScreen')}
+      />
       <Button
         title="Set Company ID"
-        onPress={navigation.push('SetCompanyIDScreen')}
+        onPress={() => navigation.navigate('SetCompanyIDScreen')}
       />
     </View>
   );
