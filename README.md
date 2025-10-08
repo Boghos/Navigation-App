@@ -68,10 +68,18 @@ Follow these steps to set up, build, and run the React Native app locally:
 
 # 1. Clone the Repository
 
+## Using SSH
+
 ```bash
 git clone git@github.com:Boghos/Navigation-App.git
-cd NavigationApp
+cd Navigation-App
 ```
+
+## Using HTTPS
+
+````bash
+git clone https://github.com/Boghos/Navigation-App.git
+cd Navigation-App
 
 # 2. Install Dependencies
 
@@ -81,7 +89,7 @@ Then install the project dependencies:
 
 ```bash
 npm install
-```
+````
 
 or
 
