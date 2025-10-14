@@ -8,8 +8,9 @@ import SettingsScreen from '../screens/SettingsScreen';
 import VoiceBotScreen from '../screens/VoiceBotScreen';
 import SetCompanyIDScreen from '../screens/SetCompanyIDScreen';
 import { useState, useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
 import { LinkingOptions } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type RootParamList = {
   SplashScreen: undefined;
@@ -40,9 +41,10 @@ function OnBoardingStackNavigator() {
         component={EnterCompanyIDScreen}
       />
       <OnBoardingStack.Screen
-        name="PickVoiceScreen"
+        name="OnboardingPickVoice"
         component={PickVoiceScreen}
         options={{ presentation: 'card' }}
+        initialParams={{ source: 'onboarding' }}
       />
     </OnBoardingStack.Navigator>
   );
@@ -84,12 +86,25 @@ function SettingsStackNavigator() {
       <SettingsStack.Screen
         name="SettingsHome"
         component={SettingsScreen}
-        options={{ headerShown: true, title: 'Settings' }}
+        options={({ navigation }) => ({
+          title: 'Settings',
+          presentation: 'modal', // shows it as modal
+          gestureEnabled: true, // allows swipe down to close (iOS)
+          headerBackVisible: false, // hides the arrow
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{ marginRight: 10 }}
+            >
+              <Ionicons name="close" size={24} color="#000" />
+            </TouchableOpacity>
+          ),
+        })}
       />
       <SettingsStack.Screen
-        name="PickVoiceScreen"
+        name="SettingsPickVoice"
         component={PickVoiceScreen}
-        options={{ headerShown: true }}
+        initialParams={{ source: 'settings' }}
       />
       <SettingsStack.Screen
         name="SetCompanyIDScreen"
@@ -100,7 +115,7 @@ function SettingsStackNavigator() {
         }}
       />
       <SettingsStack.Screen
-        name="EnterCompanyID"
+        name="SettingsEnterCompanyID"
         component={EnterCompanyIDScreen}
         options={{
           headerShown: true,
@@ -140,7 +155,7 @@ const Navigator = () => {
             options={{ headerShown: false, presentation: 'card' }}
           />
 
-          <Root.Screen
+          {/* <Root.Screen
             name="PickVoiceModal"
             component={PickVoiceScreen}
             options={{
@@ -150,7 +165,7 @@ const Navigator = () => {
                 Platform.OS === 'ios' ? 'modal' : 'transparentModal',
               animation: 'slide_from_bottom',
             }}
-          />
+          /> */}
 
           {/* <Root.Screen
             name="VoiceBotModal"

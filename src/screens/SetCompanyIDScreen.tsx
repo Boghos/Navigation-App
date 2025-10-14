@@ -7,7 +7,7 @@ const SetCompanyIDScreen = ({ navigation }: any) => {
       <Text>SetCompanyIDScreen</Text>
       <Button
         title="Set other company ID"
-        onPress={() => navigation.push('EnterCompanyID')}
+        onPress={() => navigation.navigate('SettingsEnterCompanyID')}
       />
     </View>
   );

@@ -7,7 +7,7 @@ const SettingsScreen = ({ navigation }: any) => {
       <Text>SettingsScreen</Text>
       <Button
         title="Pick Voice"
-        onPress={() => navigation.navigate('PickVoiceScreen')}
+        onPress={() => navigation.navigate('SettingsPickVoice')}
       />
       <Button
         title="Set Company ID"

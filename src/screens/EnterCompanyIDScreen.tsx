@@ -7,7 +7,7 @@ const EnterCompanyIDScreen = ({ navigation }: any) => {
       <Text>EnterCompanyID</Text>
       <Button
         title="Continue"
-        onPress={() => navigation.push('PickVoiceScreen')}
+        onPress={() => navigation.push('OnboardingPickVoice')}
       />
     </View>
   );
