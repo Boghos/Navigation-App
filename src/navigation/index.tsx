@@ -43,7 +43,11 @@ function OnBoardingStackNavigator() {
       <OnBoardingStack.Screen
         name="OnboardingPickVoice"
         component={PickVoiceScreen}
-        options={{ presentation: 'card' }}
+        options={{
+          title: 'Pick Voice',
+          presentation: 'modal', // ensures it's a modal sheet
+          animation: 'slide_from_bottom', // gives downward slide animation
+        }}
         initialParams={{ source: 'onboarding' }}
       />
     </OnBoardingStack.Navigator>
@@ -57,10 +61,21 @@ function MainStackNavigator() {
       <MainStack.Screen
         name="VoiceBotModal"
         component={VoiceBotScreen}
-        options={{
-          presentation: 'modal',
+        options={({ navigation }) => ({
+          title: 'Voice Bot',
+          presentation: 'modal', // shows it as modal
+          gestureEnabled: true, // allows swipe down to close (iOS)
+          headerBackVisible: false, // hides the arrow
           animation: 'slide_from_bottom',
-        }}
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={{ marginRight: 10 }}
+            >
+              <Ionicons name="close" size={24} color="#000" />
+            </TouchableOpacity>
+          ),
+        })}
       />
     </MainStack.Navigator>
   );
