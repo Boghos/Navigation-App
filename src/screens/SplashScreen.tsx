@@ -14,9 +14,9 @@ export default Splashscreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center', // center vertically
-    alignItems: 'center', // center horizontally
-    backgroundColor: '#f8f9fa', // light background
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f8f9fa',
   },
 
   title: {
