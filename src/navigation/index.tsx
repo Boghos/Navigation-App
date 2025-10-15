@@ -57,7 +57,22 @@ function OnBoardingStackNavigator() {
 function MainStackNavigator() {
   return (
     <MainStack.Navigator>
-      <MainStack.Screen name="MainScreen" component={MainScreen} />
+      <MainStack.Screen
+        name="MainScreen"
+        component={MainScreen}
+        options={({ navigation }) => ({
+          title: 'Main Screen',
+          headerTitleAlign: 'center',
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate('SettingsModal')}
+              style={{ marginLeft: 15 }}
+            >
+              <Ionicons name="settings-outline" size={24} color="#000" />
+            </TouchableOpacity>
+          ),
+        })}
+      />
       <MainStack.Screen
         name="VoiceBotModal"
         component={VoiceBotScreen}
