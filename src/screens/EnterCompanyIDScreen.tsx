@@ -36,6 +36,7 @@ const EnterCompanyIDScreen = ({ navigation, route }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <Text style={styles.subtitle}>Enter a company ID below:</Text>
         <TextInput
           style={styles.input}
           placeholder="Enter Company ID"
@@ -85,5 +86,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 17,
     fontWeight: '600',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 20,
   },
 });

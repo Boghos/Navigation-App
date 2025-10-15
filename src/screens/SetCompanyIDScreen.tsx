@@ -6,7 +6,6 @@ const SetCompanyIDScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <Text style={styles.subtitle}>Select a valid company ID from below:</Text>
-      {/* Demo list of company IDs */}
       <View style={styles.listContainer}>
         {validCompanyIDs.map(id => (
           <TouchableOpacity
