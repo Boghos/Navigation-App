@@ -23,7 +23,9 @@ const SetCompanyIDScreen = ({ navigation }: any) => {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('SettingsEnterCompanyID')}
+        onPress={() =>
+          navigation.navigate('SettingsEnterCompanyID', { source: 'settings' })
+        }
       >
         <Text style={styles.buttonText}>Set other company ID</Text>
       </TouchableOpacity>

@@ -22,6 +22,12 @@ const EnterCompanyIDScreen = ({ navigation, route }: any) => {
     if (source === 'onboarding') {
       // ✅ Go to Pick Voice screen in onboarding flow
       navigation.navigate('OnBoardingStack', { screen: 'OnboardingPickVoice' });
+    } else if (source === 'settings') {
+      // ✅ Settings flow: reset to SettingsHome
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'SettingsHome' }],
+      });
     } else {
       // If this screen was reached from settings (SettingsEnterCompanyID)
       navigation.goBack();
