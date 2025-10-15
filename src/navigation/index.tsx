@@ -35,16 +35,22 @@ const SettingsStack = createInnerStack();
 function OnBoardingStackNavigator() {
   return (
     <OnBoardingStack.Navigator>
-      <OnBoardingStack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+      <OnBoardingStack.Screen
+        name="WelcomeScreen"
+        component={WelcomeScreen}
+        options={{ title: 'Welcome', headerTitleAlign: 'center' }}
+      />
       <OnBoardingStack.Screen
         name="EnterCompanyIDScreen"
         component={EnterCompanyIDScreen}
+        options={{ title: 'Enter Company ID', headerTitleAlign: 'center' }}
       />
       <OnBoardingStack.Screen
         name="OnboardingPickVoice"
         component={PickVoiceScreen}
         options={{
           title: 'Pick Voice',
+          headerTitleAlign: 'center',
           presentation: 'modal', // ensures it's a modal sheet
           animation: 'slide_from_bottom', // gives downward slide animation
         }}
@@ -78,6 +84,7 @@ function MainStackNavigator() {
         component={VoiceBotScreen}
         options={({ navigation }) => ({
           title: 'Voice Bot',
+          headerTitleAlign: 'center',
           presentation: 'modal', // shows it as modal
           gestureEnabled: true, // allows swipe down to close (iOS)
           headerBackVisible: false, // hides the arrow
@@ -118,6 +125,7 @@ function SettingsStackNavigator() {
         component={SettingsScreen}
         options={({ navigation }) => ({
           title: 'Settings',
+          headerTitleAlign: 'center',
           presentation: 'modal', // shows it as modal
           gestureEnabled: true, // allows swipe down to close (iOS)
           headerBackVisible: false, // hides the arrow
@@ -134,6 +142,7 @@ function SettingsStackNavigator() {
       <SettingsStack.Screen
         name="SettingsPickVoice"
         component={PickVoiceScreen}
+        options={{ title: 'Pick Voice', headerTitleAlign: 'center' }}
         initialParams={{ source: 'settings' }}
       />
       <SettingsStack.Screen
@@ -142,6 +151,7 @@ function SettingsStackNavigator() {
         options={{
           headerShown: true,
           title: 'Set Company ID',
+          headerTitleAlign: 'center',
         }}
       />
       <SettingsStack.Screen
@@ -149,6 +159,7 @@ function SettingsStackNavigator() {
         component={EnterCompanyIDScreen}
         options={{
           headerShown: true,
+          headerTitleAlign: 'center',
           title: 'Enter Company ID',
         }}
       />
