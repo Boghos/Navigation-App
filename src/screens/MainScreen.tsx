@@ -6,6 +6,11 @@ const MainScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <Ionicons name="chatbubbles-outline" size={64} color="#007AFF" />
+        <Text style={styles.title}>Welcome to VoiceBot</Text>
+        <Text style={styles.subtitle}>
+          Tap below to start your voice assistant
+        </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -37,10 +42,23 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 40,
   },
   buttonText: {
     color: '#fff',
     fontSize: 17,
     fontWeight: '600',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginTop: 10,
+    color: '#000',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+    marginTop: 6,
+    textAlign: 'center',
   },
 });
