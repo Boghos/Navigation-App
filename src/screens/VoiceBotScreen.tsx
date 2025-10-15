@@ -4,7 +4,6 @@ import React from 'react';
 const VoiceBotScreen = ({ navigation }: any) => {
   return (
     <View>
-      <Text>VoiceBotScreen</Text>
       <Button title="Dismiss" onPress={() => navigation.goBack()} />
     </View>
   );

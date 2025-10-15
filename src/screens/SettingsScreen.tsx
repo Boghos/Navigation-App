@@ -4,7 +4,6 @@ import React from 'react';
 const SettingsScreen = ({ navigation }: any) => {
   return (
     <View>
-      <Text>SettingsScreen</Text>
       <Button
         title="Pick Voice"
         onPress={() => navigation.navigate('SettingsPickVoice')}

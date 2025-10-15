@@ -22,7 +22,6 @@ const PickVoiceScreen = ({ navigation, route }: any) => {
 
   return (
     <View>
-      <Text>PickVoiceScreen</Text>
       <Button title="Dismiss" onPress={handleDismiss} />
     </View>
   );
