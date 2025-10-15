@@ -12,6 +12,11 @@ const WelcomeScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
+        <Text style={styles.title}>Welcome to VoiceBot</Text>
+        <Text style={styles.subtitle}>
+          Get started by setting up your Company ID and choosing your preferred
+          voice.
+        </Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.push('EnterCompanyIDScreen')}
@@ -46,5 +51,19 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 17,
     fontWeight: '600',
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: '700',
+    color: '#007AFF',
+    marginBottom: 12,
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#555',
+    textAlign: 'center',
+    marginBottom: 40,
+    lineHeight: 22,
   },
 });
