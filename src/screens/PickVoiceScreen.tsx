@@ -40,7 +40,6 @@ const PickVoiceScreen = ({ navigation, route }: any) => {
       'Selected voice:',
       voiceOptions.find(v => v.id === id),
     );
-    // Simulate saving; replace with AsyncStorage, Context, or API call if needed
   };
   const handleDismiss = () => {
     if (source === 'onboarding') {
